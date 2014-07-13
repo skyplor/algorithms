@@ -1,4 +1,4 @@
-package datastructures.others;
+package datastructures.util;
 
 public abstract class TestAbstract
 {

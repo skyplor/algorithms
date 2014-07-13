@@ -1,4 +1,4 @@
-package datastructures.others;
+package datastructures.util;
 
 import java.util.ArrayList;
 import java.util.Collections;

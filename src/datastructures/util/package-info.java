@@ -5,4 +5,4 @@
  * @author Sky
  *
  */
-package datastructures.others;
+package datastructures.util;

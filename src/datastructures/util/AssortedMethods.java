@@ -1,4 +1,4 @@
-package datastructures.others;
+package datastructures.util;
 
 import java.awt.Point;
 import java.util.ArrayList;
