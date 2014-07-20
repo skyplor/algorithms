@@ -2,7 +2,6 @@ package datastructures.mathematics_probability;
 
 public class SieveOfEratosthenes {
 
-    // public SieveOfEratosthenes ()
     public boolean[] sieve(int max) {
 	boolean[] flags = new boolean[max + 1];
 
@@ -17,10 +16,11 @@ public class SieveOfEratosthenes {
     }
 
     public void init(boolean[] flags) {
-	flags[0] = false;
-	flags[1] = false;
-	for (int i = 2; i < flags.length; i++)
-	    flags[i] = true;
+	for (int i = 0; i < flags.length; i++)
+	    if (i < 2)
+		flags[i] = false;
+	    else
+		flags[i] = true;
     }
 
     public void crossOff(boolean[] flags, int prime) {
