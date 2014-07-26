@@ -1,5 +1,7 @@
 package datastructures.questions;
 
+import java.util.HashMap;
+
 /**
  * Given a NxN matrix which contains all distinct 1 to n^2 numbers, write code
  * to print sequence of increasing adjacent sequential numbers.<br>
@@ -54,7 +56,10 @@ public class PrintLongestSequence {
     }
 
     private static void printMatrix(int[][] matrix) {
-	// TODO Auto-generated method stub
+	HashMap<Integer, Coordinate> map = new HashMap<Integer, Coordinate>();
+	for (Integer k: map.keySet()) {
+	    
+	}
 	for (int i = 0; i < matrix.length; i++) {
 	    for (int j = 0; j < matrix[0].length; j++) {
 		System.out.print(matrix[i][j] + " ");
