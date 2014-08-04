@@ -1,4 +1,7 @@
-package datastructures.implementations;
+package datastructures.implementations.graph;
+
+import datastructures.implementations.MyLinkedListImpl;
+import datastructures.implementations.MyQueueImpl;
 
 public class MyGraphImpl
 {
