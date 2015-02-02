@@ -28,7 +28,7 @@ public class Q9_1 {
 	    int c2 = countStepsRecursion(i);
 	    long t4 = System.currentTimeMillis();
 	    long d2 = t4 - t3;
-	    System.out.println(i + " " + c1 + " " + c2 + " " + d1 + " " + d2);
+	    System.out.println(i + ", " + c1 + ", " + c2 + ", DP: " + d1 + "s, recursion: " + d2 + "s");
 	}
 
     }
