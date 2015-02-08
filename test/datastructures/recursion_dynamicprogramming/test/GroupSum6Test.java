@@ -1,10 +1,12 @@
-package datastructures.recursion_dynamicprogramming;
+package datastructures.recursion_dynamicprogramming.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class TestGroupSum6 {
+import datastructures.recursion_dynamicprogramming.GroupSum6;
+
+public class GroupSum6Test {
 
     @Test
     public void test1() {

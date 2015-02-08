@@ -1,10 +1,12 @@
-package datastructures.recursion_dynamicprogramming;
+package datastructures.recursion_dynamicprogramming.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class TestGroupNoAdj {
+import datastructures.recursion_dynamicprogramming.GroupNoAdj;
+
+public class GroupNoAdjTest {
 
     int[] nums = {2, 5, 10, 4};
     int[] nums2 = {2, 5, 10, 4,2};

@@ -18,7 +18,7 @@ public class Fibonacci {
     public static void main(String[] args) {
 	// TODO Auto-generated method stub
 	for (int i = 0; i < 20; i++)
-	    System.out.println(findFibonacci(i));
+	    System.out.println(fibonacci(i));
     }
 
     /*
@@ -29,13 +29,13 @@ public class Fibonacci {
      * n = 4, return 1 + 2 = 3
      * n = 5, return 2 + 3 = 5
      */
-    public static int findFibonacci(int n) {
+    public static int fibonacci(int n) {
 	if (n <= 0)
 	    return 0;
 	if (n == 1)
 	    return 1;
 	else {
-	    int result = findFibonacci(n - 1) + findFibonacci(n - 2);
+	    int result = fibonacci(n - 1) + fibonacci(n - 2);
 	    return result;
 	}
     }
