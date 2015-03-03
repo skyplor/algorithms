@@ -75,4 +75,8 @@ public class MyQueueImpl<T> {
     public boolean isEmpty() {
 	return size() == 0;
     }
+    
+    public T peek() {
+	return head.data;
+    }
 }

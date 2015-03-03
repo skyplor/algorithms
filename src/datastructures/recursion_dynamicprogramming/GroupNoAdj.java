@@ -33,4 +33,13 @@ public class GroupNoAdj {
 	return false;
     }
 
+    public static boolean groupNoAdj2(int start, int[] nums, int target) {
+	return group(start, nums, target, 0);
+    }
+
+    private static boolean group(int start, int[] nums, int target, int sum) {
+	if (start > nums.length - 1)
+	    return sum == target;
+	return group(start + 2, nums, target, sum + nums[start]) || group(start + 1, nums, target, sum);
+    }
 }
