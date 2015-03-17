@@ -29,13 +29,13 @@ public class Fibonacci {
      * n = 4, return 1 + 2 = 3
      * n = 5, return 2 + 3 = 5
      */
-    public static int fibonacci(int n) {
+    public static long fibonacci(int n) {
 	if (n <= 0)
-	    return 0;
+	    return 0L;
 	if (n == 1)
-	    return 1;
+	    return 1L;
 	else {
-	    int result = fibonacci(n - 1) + fibonacci(n - 2);
+	    Long result = fibonacci(n - 1) + fibonacci(n - 2);
 	    return result;
 	}
     }

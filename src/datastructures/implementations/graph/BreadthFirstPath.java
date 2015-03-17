@@ -49,7 +49,7 @@ public class BreadthFirstPath {
 	    path.push(v);
 	    v = edgeTo[v];
 	}
-	path.push(v);
+	path.push(s);
 	return path;
     }
 }

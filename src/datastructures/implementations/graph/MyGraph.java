@@ -28,7 +28,7 @@ public class MyGraph {
 		E++;
 	}
 	
-	public Iterable<Integer> adjNodes(int v) {
+	public Iterable<Integer> adj(int v) {
 		return adjNodes[v];
 	}
 }
