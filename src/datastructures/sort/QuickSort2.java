@@ -17,15 +17,16 @@ public class QuickSort2 {
 
     private int partition(int[] a, int low, int high) {
 	int pivot = high;
-	int firsthigh = low;
+	int wall = low;
 	for (int i = low; i < high; i++) {
 	    if (a[i] <= a[pivot]) {
-		swap(a, i, firsthigh);
-		firsthigh++;
+		swap(a, i, wall);
+		wall++;
 	    }
 	}
-	swap(a, firsthigh, pivot);
-	return firsthigh;
+	swap(a, wall, pivot);
+	// return the wall index (or rather, the current pivot position)
+	return wall;
     }
 
     private void swap(int[] a, int first, int second) {

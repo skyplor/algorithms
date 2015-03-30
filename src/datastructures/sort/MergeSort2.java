@@ -23,25 +23,25 @@ public class MergeSort2 {
     }
 
     private void merge(int[] a, int begin, int middle, int end) {
-	int k = begin;
+	int i;
 	MyQueueImpl<Integer> q1 = new MyQueueImpl<Integer>();
 	MyQueueImpl<Integer> q2 = new MyQueueImpl<Integer>();
-	for (int i = begin; i <= middle; i++)
+	for (i = begin; i <= middle; i++)
 	    q1.enqueue(a[i]);
-	for (int j = middle + 1; j <= end; j++)
-	    q2.enqueue(a[j]);
-
+	for (i = middle + 1; i <= end; i++)
+	    q2.enqueue(a[i]);
+	i = begin;
 	while (!(q1.isEmpty() || q2.isEmpty())) {
 	    int first = q1.peek();
 	    int second = q2.peek();
 	    if (first <= second)
-		a[k++] = q1.dequeue();
+		a[i++] = q1.dequeue();
 	    else
-		a[k++] = q2.dequeue();
+		a[i++] = q2.dequeue();
 	}
 	while (!q1.isEmpty())
-	    a[k++] = q1.dequeue();
+	    a[i++] = q1.dequeue();
 	while (!q2.isEmpty())
-	    a[k++] = q2.dequeue();
+	    a[i++] = q2.dequeue();
     }
 }
