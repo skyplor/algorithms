@@ -3,21 +3,21 @@ package datastructures.util;
 /* One node of a binary tree. The data element stored is a single 
  * character.
  */
-public class TreeNode
+public class TreeNode<T extends Comparable<T>>
 {
-	public int data;
-	public TreeNode left;
-	public TreeNode right;
-	public TreeNode parent;
-	private int size = 0;
+	public T data;
+	public TreeNode<T> left;
+	public TreeNode<T> right;
+	public TreeNode<T> parent;
+	public int nodeSize = 0;
 
-	public TreeNode(int d)
+	public TreeNode(T d)
 	{
 		data = d;
-		size = 1;
+		nodeSize = 1;
 	}
 
-	public void setLeftChild(TreeNode left)
+	public void setLeftChild(TreeNode<T> left)
 	{
 		this.left = left;
 		if (left != null)
@@ -26,7 +26,7 @@ public class TreeNode
 		}
 	}
 
-	public void setRightChild(TreeNode right)
+	public void setRightChild(TreeNode<T> right)
 	{
 		this.right = right;
 		if (right != null)
@@ -35,13 +35,13 @@ public class TreeNode
 		}
 	}
 
-	public void insertInOrder(int d)
+	public void insertInOrder(T d)
 	{
-		if (d <= data)
+		if (d.compareTo(data) == -1 || d.compareTo(data) == 0)
 		{
 			if (left == null)
 			{
-				setLeftChild(new TreeNode(d));
+				setLeftChild(new TreeNode<T>(d));
 			}
 			else
 			{
@@ -52,26 +52,21 @@ public class TreeNode
 		{
 			if (right == null)
 			{
-				setRightChild(new TreeNode(d));
+				setRightChild(new TreeNode<T>(d));
 			}
 			else
 			{
 				right.insertInOrder(d);
 			}
 		}
-		size++;
-	}
-
-	public int size()
-	{
-		return size;
+		nodeSize++;
 	}
 
 	public boolean isBST()
 	{
 		if (left != null)
 		{
-			if (data < left.data || !left.isBST())
+			if (data.compareTo(left.data) == -1 || !left.isBST())
 			{
 				return false;
 			}
@@ -79,7 +74,7 @@ public class TreeNode
 
 		if (right != null)
 		{
-			if (data >= right.data || !right.isBST())
+			if (data.compareTo(right.data) == 0 || data.compareTo(right.data) == 1 || !right.isBST())
 			{
 				return false;
 			}
@@ -95,37 +90,37 @@ public class TreeNode
 		return 1 + Math.max(leftHeight, rightHeight);
 	}
 
-	public TreeNode find(int d)
+	public TreeNode<T> find(T d)
 	{
-		if (d == data)
+		if (d.compareTo(data) == 0)
 		{
 			return this;
 		}
-		else if (d <= data)
+		else if (d.compareTo(data) == -1)
 		{
 			return left != null ? left.find(d) : null;
 		}
-		else if (d > data)
+		else if (d.compareTo(data) == 1)
 		{
 			return right != null ? right.find(d) : null;
 		}
 		return null;
 	}
 
-	private static TreeNode createMinimalBST(int arr[], int start, int end)
+	private TreeNode<T> createMinimalBST(T arr[], int start, int end)
 	{
 		if (end < start)
 		{
 			return null;
 		}
 		int mid = (start + end) / 2;
-		TreeNode n = new TreeNode(arr[mid]);
+		TreeNode<T> n = new TreeNode<T>(arr[mid]);
 		n.setLeftChild(createMinimalBST(arr, start, mid - 1));
 		n.setRightChild(createMinimalBST(arr, mid + 1, end));
 		return n;
 	}
 
-	public static TreeNode createMinimalBST(int array[])
+	public TreeNode<T> createMinimalBST(T array[])
 	{
 		return createMinimalBST(array, 0, array.length - 1);
 	}

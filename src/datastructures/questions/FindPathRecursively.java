@@ -18,17 +18,17 @@ public class FindPathRecursively {
      * @param args
      */
     public static void main(String[] args) {
-	TreeNode node = AssortedMethods.randomBST(20, 0, 80);
+	TreeNode<Integer> node = AssortedMethods.randomBST(20, 0, 80);
 	BTreePrinter.printNode(node);
 	findPathToRoot(node);
     }
 
-    public static void findPathToRoot(TreeNode node) {
+    public static void findPathToRoot(TreeNode<Integer> node) {
 	printPathToRoot(node, new ArrayList<Integer>());
 
     }
 
-    private static void printPathToRoot(TreeNode node, ArrayList<Integer> path) {
+    private static void printPathToRoot(TreeNode<Integer> node, ArrayList<Integer> path) {
 	if (node == null)
 	    return;
 	path.add(node.data);

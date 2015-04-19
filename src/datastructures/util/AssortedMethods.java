@@ -158,9 +158,9 @@ public class AssortedMethods {
 		return buffer.toString();
 	}
 	
-	public static TreeNode randomBST(int N, int min, int max) {
+	public static TreeNode<Integer> randomBST(int N, int min, int max) {
 		int d = randomIntInRange(min, max);
-		TreeNode root = new TreeNode(d);
+		TreeNode<Integer> root = new TreeNode<Integer>(d);
 		for (int i = 1; i < N; i++) {
 			root.insertInOrder(randomIntInRange(min, max));
 		}
@@ -168,22 +168,22 @@ public class AssortedMethods {
 	}
 	
 	/* Creates tree by mapping the array left to right, top to bottom. */
-	public static TreeNode createTreeFromArray(int[] array) {
+	public static TreeNode<Integer> createTreeFromArray(int[] array) {
 		if (array.length > 0) {
-			TreeNode root = new TreeNode(array[0]);
-			java.util.Queue<TreeNode> queue = 
-				new java.util.LinkedList<TreeNode>();
+		    TreeNode<Integer> root = new TreeNode<Integer>(array[0]);
+			java.util.Queue<TreeNode<Integer>> queue = 
+				new java.util.LinkedList<TreeNode<Integer>>();
 			queue.add(root);
 			boolean done = false;
 			int i = 1 ;
 			while (!done) {
-				TreeNode r = (TreeNode) queue.element();
+			    TreeNode<Integer> r = (TreeNode<Integer>) queue.element();
 				if (r.left == null) {
-					r.left = new TreeNode(array[i]);
+					r.left = new TreeNode<Integer>(array[i]);
 					i++;
 					queue.add(r.left);
 				} else if (r.right == null) {
-					r.right = new TreeNode(array[i]);
+					r.right = new TreeNode<Integer>(array[i]);
 					i++;
 					queue.add(r.right);
 				} else {

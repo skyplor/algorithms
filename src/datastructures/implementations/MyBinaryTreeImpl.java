@@ -1,34 +1,36 @@
 package datastructures.implementations;
 
+import datastructures.util.TreeNode;
+
 @SuppressWarnings("unused")
-public class MyBinaryTreeImpl<T> {
+public class MyBinaryTreeImpl<T extends Comparable<T>> {
     T data;
-    Node<T> root;
+    TreeNode<T> root;
 
-    private class Node<Type> {
-	Type data;
-	Node<Type> left, right;
-	int nodeSize;
-
-	Node(Type data) {
-	    this.data = data;
-	    this.left = null;
-	    this.right = null;
-	    nodeSize = 1;
-	}
-
-	Node(Type data, int nodeSize) {
-	    this.data = data;
-	    this.nodeSize = nodeSize;
-	}
-    }
+//    private class Node<Type> {
+//	Type data;
+//	Node<Type> left, right;
+//	int nodeSize;
+//
+//	Node(Type data) {
+//	    this.data = data;
+//	    this.left = null;
+//	    this.right = null;
+//	    nodeSize = 1;
+//	}
+//
+//	Node(Type data, int nodeSize) {
+//	    this.data = data;
+//	    this.nodeSize = nodeSize;
+//	}
+//    }
 
     public void insert(T data) {
 	root = insert(root, data);
     }
 
-    private Node<T> insert(Node<T> root, T data) {
-	Node<T> n = new Node<T>(data, 1);
+    private TreeNode<T> insert(TreeNode<T> root, T data) {
+	TreeNode<T> n = new TreeNode<T>(data);
 	if (root == null) {
 	    root = n;
 	    return root;
@@ -52,7 +54,7 @@ public class MyBinaryTreeImpl<T> {
 	return size(root);
     }
 
-    private int size(Node<T> root) {
+    private int size(TreeNode<T> root) {
 	if (root == null)
 	    return 0;
 	return root.nodeSize;
@@ -62,7 +64,7 @@ public class MyBinaryTreeImpl<T> {
 	return maxDepth(root);
     }
 
-    public int maxDepth(Node<T> root) {
+    public int maxDepth(TreeNode<T> root) {
 	if (root == null)
 	    return 0;
 	int maxLeft = maxDepth(root.left);
@@ -74,14 +76,14 @@ public class MyBinaryTreeImpl<T> {
 	printBFS(root);
     }
 
-    private void printBFS(Node<T> root) {
-	MyQueueImpl<Node<T>> curLevel = new MyQueueImpl<Node<T>>();
-	MyQueueImpl<Node<T>> nextLevel = new MyQueueImpl<Node<T>>();
+    private void printBFS(TreeNode<T> root) {
+	MyQueueImpl<TreeNode<T>> curLevel = new MyQueueImpl<TreeNode<T>>();
+	MyQueueImpl<TreeNode<T>> nextLevel = new MyQueueImpl<TreeNode<T>>();
 	if (root == null)
 	    return;
 	curLevel.enqueue(root);
 	while (curLevel.size() > 0) {
-	    Node<T> current = curLevel.dequeue();
+	    TreeNode<T> current = curLevel.dequeue();
 	    System.out.print(current.data + " ");
 	    if (current.left != null)
 		nextLevel.enqueue(current.left);
@@ -90,12 +92,12 @@ public class MyBinaryTreeImpl<T> {
 	    if (curLevel.size() == 0) {
 		System.out.println();
 		curLevel = nextLevel;
-		nextLevel = new MyQueueImpl<Node<T>>();
+		nextLevel = new MyQueueImpl<TreeNode<T>>();
 	    }
 	}
     }
 
-    private void printDFS(Node<T> root) {
+    private void printDFS(TreeNode<T> root) {
 	if (root == null)
 	    return;
 	System.out.println(root.data + " ");
@@ -109,7 +111,7 @@ public class MyBinaryTreeImpl<T> {
 	return DFS(root, data);
     }
 
-    private boolean DFS(Node<T> node, T data) {
+    private boolean DFS(TreeNode<T> node, T data) {
 	if (node == null)
 	    return false;
 	if (node.data == data)
@@ -123,13 +125,13 @@ public class MyBinaryTreeImpl<T> {
 	return BFS(root, data);
     }
 
-    private boolean BFS(Node<T> node, T data) {
+    private boolean BFS(TreeNode<T> node, T data) {
 	if (node == null)
 	    return false;
-	MyQueueImpl<Node<T>> nodeQueue = new MyQueueImpl<Node<T>>();
+	MyQueueImpl<TreeNode<T>> nodeQueue = new MyQueueImpl<TreeNode<T>>();
 	nodeQueue.enqueue(node);
 	while (nodeQueue.size() > 0) {
-	    Node<T> n = nodeQueue.dequeue();
+	    TreeNode<T> n = nodeQueue.dequeue();
 	    if (n.data == data)
 		return true;
 
@@ -141,6 +143,13 @@ public class MyBinaryTreeImpl<T> {
 	}
 	System.out.println("Couldn't find data in tree");
 	return false;
+    }
+
+    /**
+     * @return the root
+     */
+    public TreeNode<T> getRoot() {
+        return root;
     }
 
     public static void main(String[] args) {
@@ -160,58 +169,3 @@ public class MyBinaryTreeImpl<T> {
 	}
     }
 }
-
-// class MyQueueImpl<T>
-// {
-// T data;
-// Node<T> head, tail;
-// int length = 0;
-//
-// private class Node<Type>
-// {
-// Type data;
-// Node<Type> next;
-//
-// Node(Type data)
-// {
-// this.data = data;
-// }
-// }
-//
-// public MyQueueImpl()
-// {
-// tail = null;
-// head = null;
-// length = 0;
-// }
-//
-// public void enqueue(T data)
-// {
-// Node<T> n = new Node<T>(data);
-// if (tail == null)
-// {
-// head = tail = n;
-// }
-// else
-// {
-// tail.next = n;
-// tail = tail.next;
-// }
-// length++;
-// }
-//
-// public T dequeue()
-// {
-// if (head == null)
-// return null;
-// T temp = head.data;
-// head = head.next;
-// length--;
-// return temp;
-// }
-//
-// public int size()
-// {
-// return length;
-// }
-// }
