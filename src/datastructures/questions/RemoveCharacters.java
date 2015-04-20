@@ -26,7 +26,7 @@ public class RemoveCharacters {
      * Constraint is that String is immutable
      * 1. We can work with array, each deletion we have to shift the rest of the characters back 1 index. Time complexity would be an issue
      * 2. We can use a StringBuilder.
-     * 3. We can have 2 pointers i.e. read write pointer and overwrite the write pointer when required
+     * 3. We can have 2 pointers i.e. read write pointer and overwrite the write pointer when required (This is the best option)
      */
 
     // 2nd option - the toString method do an arraycopy at the end, incurring another N space
@@ -63,7 +63,7 @@ public class RemoveCharacters {
     }
 
     // 2nd option - alternate way by initialising with a specific length.
-    // So we eliminate the need to reallocate and thus creating a new array and doing array copy
+    // So we eliminate the need to reallocate and thus creating a new array and doing array copy. BUT we still have to create 1 array at the start.
     public String removeChars2Alt2(String str, String remove) {
 	Set<Character> set = new HashSet<Character>();
 	for (int i = 0; i < remove.length(); i++)
@@ -78,7 +78,7 @@ public class RemoveCharacters {
     }
 
     // 3rd option - All 3 methods does an array copy at the end so shouldn't be a factor for consideration
-    // This idea is the best as we completely eliminate the possibility of array resizing by having the pointers
+    // This idea is the best as we completely eliminate the possibility of array resizing by having the pointers and not creating additional arrays at all.
     public String removeChars3(String str, String remove) {
 	Set<Character> set = new HashSet<Character>();
 	for (int i = 0; i < remove.length(); i++)
