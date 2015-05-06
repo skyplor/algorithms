@@ -24,7 +24,7 @@ public class WordDistanceFinder {
 	System.out.println(findShortestDistance(words, "fox", "quick"));
 	
 	WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList(words));
-	System.out.println(finder.distance("fox","the"));
+	System.out.println(finder.distance("the","fox"));
     }
     
     List<String> words;
